@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.FortContainerFragment">
+
+    <LinearLayout
+        android:id="@+id/layout_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundmenu"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Name"
+            android:textColor="#000000"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:id="@+id/inside_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#5002C1E3"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="1dp"
+                android:src="@drawable/img_fort_standart" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/inside_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#5002C1E3"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:padding="1dp"
+                android:src="@drawable/img_fort_standart"  />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
