@@ -12,11 +12,34 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import guide.battleroyale_fortnite.build.buildingguide.Fragment.MainFragment;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static FragmentManager fragmentManager;
+    private AdView mAdView;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAdView.resume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mAdView.destroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mAdView.pause();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +48,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FloatingActionButton fab =  findViewById(R.id.fab);
         fab.setOnClickListener(this);
 
+        MobileAds.initialize(this, "ca-app-pub-1336421761813784~2381355296");
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
         fragmentManager = getSupportFragmentManager();
         if (findViewById(R.id.fragment_container)!=null){
             if (savedInstanceState!=null){
                 return;
             }
-            fragmentManager.beginTransaction().add(R.id.fragment_container, new MainFragment()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new MainFragment()).commit();
         }
 
         BottomAppBar bar = (BottomAppBar) findViewById(R.id.app_bar);
@@ -66,27 +95,29 @@ switch (view.getId()){
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        MainFragment mainFragment = new MainFragment();
         switch (id) {
             case R.id.item_rate:
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "item_rate", Toast.LENGTH_SHORT);
                 toast.show();
-                Uri address = Uri.parse("https://play.google.com/store/apps/details?id=com.gbattleroyale.fortnitestarschallenge");
+                Uri address = Uri.parse("https://play.google.com/store/apps/details?id=guide.battleroyale_fortnite.build.buildingguide");
                 Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
                 startActivity(openlinkIntent);
 
                 return true;
             case R.id.item_share:
-                Toast toast2 = Toast.makeText(getApplicationContext(),
-                        "item_share", Toast.LENGTH_SHORT);
-                toast2.show();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "\t\n" +
+                        "Building Guide for Fortnite - https://play.google.com/store/apps/details?id=guide.battleroyale_fortnite.build.buildingguide");
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent,"Share"));
                 return true;
-            case R.id.item_help:
-                Toast toast3 = Toast.makeText(getApplicationContext(),
-                        "item_help", Toast.LENGTH_SHORT);
-                toast3.show();
-                return true;
+//            case R.id.item_help:
+//                Toast toast3 = Toast.makeText(getApplicationContext(),
+//                        "item_help", Toast.LENGTH_SHORT);
+//                toast3.show();
+//                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

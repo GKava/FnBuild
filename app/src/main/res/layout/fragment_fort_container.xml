@@ -1,63 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.FortContainerFragment">
+    tools:context=".Fragment.Fort.FortFragment">
 
     <LinearLayout
-        android:id="@+id/layout_info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/roundmenu"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
+            android:textSize="30dp"
+            android:textStyle="bold"
             android:id="@+id/txtName"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Name"
-            android:textColor="#000000"
-            android:textSize="30dp" />
+            android:textColor="#FFF" />
 
-        <LinearLayout
-            android:id="@+id/inside_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#5002C1E3"
-            android:orientation="vertical">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="0dp" />
 
-            <ImageView
-                android:id="@+id/img1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="1dp"
-                android:src="@drawable/img_fort_standart" />
+</LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/inside_layout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#5002C1E3"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/img2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:padding="1dp"
-                android:src="@drawable/img_fort_standart"  />
-        </LinearLayout>
-
-    </LinearLayout>
+</FrameLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+
+
+
+
+

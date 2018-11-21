@@ -1,6 +1,4 @@
-package bar.appbarbottom.appbarbottom.ItemExample;
-
-import android.widget.ImageView;
+package guide.battleroyale_fortnite.build.buildingguide.ItemExample;
 
 import java.util.ArrayList;
 import java.util.List;

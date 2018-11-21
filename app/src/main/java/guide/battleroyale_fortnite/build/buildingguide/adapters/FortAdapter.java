@@ -11,10 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.util.ArrayList;
-import bar.appbarbottom.appbarbottom.ItemExample.FortItem;
-import guide.battleroyale_fortnite.build.buildingguide.Fragment.FortContainerFragment;
+import guide.battleroyale_fortnite.build.buildingguide.Fragment.Fort.FortContent;
+import guide.battleroyale_fortnite.build.buildingguide.ItemExample.FortItem;
 import guide.battleroyale_fortnite.build.buildingguide.MainActivity;
 import guide.battleroyale_fortnite.build.buildingguide.R;
 
@@ -23,7 +22,7 @@ public class FortAdapter extends RecyclerView.Adapter<FortAdapter.ViewHolder>   
 
     private ArrayList<FortItem> items = new ArrayList<>();
     private static final String TAG = "MY LOG ADAPTER ";
-
+    Fragment fr = new FortContent();
 
     @Override
     public int getItemCount() {
@@ -31,13 +30,12 @@ public class FortAdapter extends RecyclerView.Adapter<FortAdapter.ViewHolder>   
     }
 
 
-    public void putInFortContainer(int arg){
-        Fragment fr = new FortContainerFragment();
-        Bundle args = new Bundle();
-        args.putInt("key", arg);
-        fr.setArguments(args);
-
-    }
+//    public void putInFortContainer(int arg){
+//        Bundle args = new Bundle();
+//        args.putInt("key", arg);
+//        fr.setArguments(args);
+//
+//    }
 
     @Override
     public void onBindViewHolder(@NonNull FortAdapter.ViewHolder holder, final int position) {
@@ -46,29 +44,18 @@ public class FortAdapter extends RecyclerView.Adapter<FortAdapter.ViewHolder>   
         final FortItem item = items.get(position);
         holder.textName.setText(item.getTextName());
         holder.imageName.setImageResource(item.getImageName());
-
-
         holder.mItemCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (pos==1){
-
-                    putInFortContainer(1);
-
+                    Fragment fr = new FortContent();
+                    Bundle args = new Bundle();
+                    args.putInt("img_int_fort", pos);
+                    fr.setArguments(args);
                     MainActivity.fragmentManager.beginTransaction()
-                            .replace(R.id.fragment_container, new FortContainerFragment())
+                            .replace(R.id.fragment_container, fr)
                             .addToBackStack(null)
                             .commit();
-                }
-                if (pos==2){
-                    putInFortContainer(2);
-                    MainActivity.fragmentManager.beginTransaction()
-                            .replace(R.id.fragment_container, new FortContainerFragment())
-                            .addToBackStack(null)
-                            .commit();
-                }
 
-                Toast.makeText(view.getContext(), item.getTextName()+ " Pos = " + pos, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -79,7 +66,7 @@ public class FortAdapter extends RecyclerView.Adapter<FortAdapter.ViewHolder>   
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d(TAG, "onCreateViewHolder");
         View view;
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_fort_menu, parent, false);
         return new ViewHolder(view);
     }
 
@@ -111,14 +98,4 @@ public class FortAdapter extends RecyclerView.Adapter<FortAdapter.ViewHolder>   
         notifyItemChanged(items.size() - 1);
     }
 
-    public  void deleteMessage() {
-        Log.d(TAG, "deleteMessage");
-        int pos = getItemCount();
-        if (pos > 0) {
-            for (int i = 0; i < pos; i++) {
-                this.items.remove(0);
-            }
-            this.notifyItemRangeRemoved(0, pos);
-        }
-    }
 }

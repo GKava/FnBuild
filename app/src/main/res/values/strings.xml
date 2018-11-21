@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">AppBarBottom</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="fn_info">Fortnite, также известная как Fortnite: Save the World — компьютерная игра в жанре симулятора выживания с открытым миром, разработанная совместно американской компанией Epic Games и польской People Can Fly и выпущенная Epic Games в ранний доступ в 2017 году; выпуск полной версии ожидается в 2018 году.</string>
+    <string name="app_name">Building Guide</string>
+    <string name="banner_ad_unit_id">ca-app-pub-1336421761813784/1265915877</string>
+    <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
 </resources>

@@ -35,9 +35,9 @@ public class AllConstructionItem {
 
     public static List<AllConstructionItem> getAllItems(){
         ArrayList<AllConstructionItem> itemList = new ArrayList<>();
-
-        itemList.add(new AllConstructionItem(R.drawable.c1, R.drawable.c1_1));
-        itemList.add(new AllConstructionItem(R.drawable.c2, R.drawable.c2_1));
+//
+//        itemList.add(new AllConstructionItem(R.drawable.c1, R.drawable.c1_1));
+//        itemList.add(new AllConstructionItem(R.drawable.c2, R.drawable.c2_1));
 
         return itemList;
     }

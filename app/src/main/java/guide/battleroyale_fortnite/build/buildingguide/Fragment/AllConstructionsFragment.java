@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 import guide.battleroyale_fortnite.build.buildingguide.ItemExample.AllConstructionItem;
 import guide.battleroyale_fortnite.build.buildingguide.R;
-import guide.battleroyale_fortnite.build.buildingguide.adapters.AllConstructionAdapter;
+import guide.battleroyale_fortnite.build.buildingguide.adapters.TwoImageAdapter;
 
 
 /**
@@ -23,10 +23,7 @@ import guide.battleroyale_fortnite.build.buildingguide.adapters.AllConstructionA
 public class AllConstructionsFragment extends Fragment {
     private RecyclerView recyclerView;
     private LinearLayoutManager verticalLinearLayoutManager;
-    private AllConstructionAdapter adapter;
-    private ImageView im1 , im1_1, im2,im2_1;
-
-
+    private TwoImageAdapter adapter;
 
     public AllConstructionsFragment() {
 
@@ -40,13 +37,12 @@ public class AllConstructionsFragment extends Fragment {
         verticalLinearLayoutManager = new LinearLayoutManager(getActivity());
         verticalLinearLayoutManager.setStackFromEnd(false);
         recyclerView.setLayoutManager(verticalLinearLayoutManager);
-
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x/2;
 
-        adapter = new AllConstructionAdapter(width);
+        adapter = new TwoImageAdapter(width);
         recyclerView.setAdapter(adapter);
         adapter.addMessage(new AllConstructionItem(R.drawable.c1, R.drawable.c1_1));
         adapter.addMessage(new AllConstructionItem(R.drawable.c2, R.drawable.c2_1));
